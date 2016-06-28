@@ -1,0 +1,19 @@
+body{
+    overflow-x: hidden!important;
+}
+
+.navbar {
+    width:100%;
+    margin-bottom: 0 !important;
+    z-index:101!important;
+    -webkit-border-radius:0 0!important;
+    -moz-border-radius:0 0!important;
+    border-radius:0 0!important;
+}
+.x-container{
+    height: 100%; padding: 52px 0;
+    width:100%; position: absolute; left:0; top:0; z-index: 100; background-color: #f6f6f6;
+}
+.x-footer{
+    border-top:1px solid #ddd;  height:52px; width: 100%; position:absolute; left:0; bottom:0; z-index:101;background-color: white;padding: 15px 0;
+}
