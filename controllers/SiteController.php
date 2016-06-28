@@ -4,10 +4,12 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -90,5 +92,23 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    
+    public function actionTest()
+    {
+        $uploadUrl = Yii::$app->urlManager->createUrl('admin/upload/pano');
+        echo '<html>
+<body>
+
+<form action="'.$uploadUrl.'" method="post"
+enctype="multipart/form-data">
+<label for="file">Filename:</label>
+<input type="file" name="pano" id="file" />
+<br />
+<input type="submit" name="submit" value="Submit" />
+</form>
+
+</body>
+</html>';
     }
 }
