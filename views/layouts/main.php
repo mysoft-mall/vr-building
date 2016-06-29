@@ -45,7 +45,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">发布 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">素材库</a></li>
+                    <li><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/material')?>">素材库</a></li>
                 </ul>
             </div>
         </div>
