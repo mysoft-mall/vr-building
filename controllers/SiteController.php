@@ -96,7 +96,7 @@ class SiteController extends Controller
     
     public function actionTest()
     {
-        $uploadUrl = Yii::$app->urlManager->createUrl('admin/upload/pano');
+        $uploadUrl = Yii::$app->urlManager->createUrl('admin/material/upload');
         echo '<html>
 <body>
 
