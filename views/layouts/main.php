@@ -23,6 +23,11 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
     <link rel="stylesheet" href="<?=$baseUrl?>/dist/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?=$baseUrl?>/css/global.css">
     <?php $this->head() ?>
+    <?php
+    if (isset($this->blocks['css'])) { ?>
+        <?= $this->blocks['css'] ?>
+        <?php
+    } ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -46,7 +51,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
         </div>
     </nav>
     <div class="x-container">
-        <div class="container">
+        <div class="container" style="height:100%">
             <?= $content ?>
         </div>
     </div>
@@ -59,6 +64,11 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
     </footer>
 <script src="<?=$baseUrl?>/dist/jquery/jquery.min.js"></script>
 <script src="<?=$baseUrl?>/dist/bootstrap/js/bootstrap.min.js"></script>
+<?php
+if (isset($this->blocks['js'])) { ?>
+    <?= $this->blocks['js'] ?>
+    <?php
+} ?>
 <?php $this->endBody() ?>
 </body>
 </html>

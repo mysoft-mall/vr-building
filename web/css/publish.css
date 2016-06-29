@@ -1,1 +1,40 @@
 /*  publisher CSS file  */
+button,input{ height:100%; outline:none; border:none;}
+.pad-publisher{
+    position:relative;
+    height: auto;
+    width:100%;
+    top:50%;
+    left:50%;
+    border:1px solid #ddd;
+    box-shadow:0 0px 6px #ddd;
+    background-color:white;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.pad-publisher .tab-nav{ height:50px;background-color:#f8f8f8; }
+.pad-publisher .tab-nav>.btn-scene{ height:100%; min-width:130px; background-color:white;
+    border:none;  border-top:3px solid white; color:#666
+}
+.pad-publisher .tab-nav>.btn-scene.selected{ border-top: 3px solid #4faf13; }
+.pad-main{ }
+.pad-main .x-row{height:55px; padding:10px 20px;}
+.pad-main .x-row input{ height:100%; padding:0 10px; width:100%; border:1px solid #ddd;}
+.pad-main .pad-function{ background-color: #f6f6f6;height:450px}
+.pad-main .pad-function .x-button{
+    background-color:#e4e4e4; padding: 0 15px;height:100%; border:none; color:#666; margin-right:8px;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    -ms-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    transition: background-color .3s;
+}
+.pad-main .pad-function .x-button:hover{ background-color:#4faf13;color:white; }
+.pad-main .zone-uploaded-pics, .pad-main .zone-default{height:395px; background-color:#eee;}
+.pad-main .zone-default{line-height:395px; color:#ccc; text-align: center; font-size: 40px; font-weight: 900}
+.pad-uploader{height:55px; text-align:center; padding:10px 20px;}
+.pad-uploader .btn-publish{ height:100%; width:100%; background-color:#4faf13; color:white; }
+.pad-uploader .btn-publish:hover{ height:100%; width:100%; background-color:#439510; color:white; }

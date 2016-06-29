@@ -1,5 +1,5 @@
 <?php $this->beginBlock('css') ?>
-    <link rel="stylesheet" href="/modules/css/activity/reward/object.css"/>
+    <link rel="stylesheet" href="<?=$baseUrl?>/css/publish.css"/>
 <?php $this->endBlock() ?>
 <div class="admin-default-index">
     <h1><?= $this->context->action->uniqueId ?></h1>
