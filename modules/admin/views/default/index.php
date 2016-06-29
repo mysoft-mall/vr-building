@@ -1,3 +1,6 @@
+<?php $this->beginBlock('css') ?>
+    <link rel="stylesheet" href="/modules/css/activity/reward/object.css"/>
+<?php $this->endBlock() ?>
 <div class="admin-default-index">
     <h1><?= $this->context->action->uniqueId ?></h1>
     <p>
