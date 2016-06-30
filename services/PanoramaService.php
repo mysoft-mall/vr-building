@@ -27,4 +27,14 @@ class PanoramaService extends Service
     {
         return Panorama::getList($queryModel);
     }
+
+    /**
+     * 删除全景图
+     * @param $id
+     * @return bool
+     */
+    public function delete($id)
+    {
+        return Panorama::deleteAll('id=:id', [':id'=>$id]) > 0;
+    }
 }

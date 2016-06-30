@@ -21,8 +21,6 @@ class PanoController extends Controller
     {
         $krpanoPath = \Yii::$app->basePath . '/bin/krpano/krpanotools';
         $command = $krpanoPath . ' makepano -config=templates/vtour-multires.config '.$inputImg;
-        var_dump($command);
         exec($command, $result);
-var_dump($result);
     }
 }

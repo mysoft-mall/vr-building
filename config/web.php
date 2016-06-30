@@ -50,7 +50,9 @@ $config = [
                 'material/upload' => 'admin/material/upload',
                 'material/publish' => 'admin/material/generate',
                 'material/list' => 'admin/material/list',
+                'material/delete' => 'admin/material/delete',
                 'panorama/list' => 'admin/panorama/list',
+                'panorama/delete' => 'admin/panorama/delete',
             ],
         ],
 

@@ -112,4 +112,9 @@ enctype="multipart/form-data">
 </html>';
     }
 
+    public function actionPano($id)
+    {
+        echo '<iframe src="'.Yii::$app->urlManager->getHostInfo().'/pano/'.$id.'" height="100%" width="100%" ></iframe>';
+    }
+
 }

@@ -94,5 +94,26 @@ class MaterialController extends Controller
         $data = MaterialService::Instance()->getList($model);
         Yii::$app->response->successList($data, $model->getPagination());
     }
+
+    /**
+     * 删除素材
+     *
+     * 请求方法：POST
+     *
+     * 请求参数
+     * id 素材ID
+     * 
+     */
+    public function actionDelete()
+    {
+        $id = Yii::$app->request->post('id');
+        $res = MaterialService::Instance()->delete($id);
+        if($res){
+            Yii::$app->response->success('删除成功');
+        }else{
+            Yii::$app->response->error('删除失败');
+        }
+        
+    }
     
 }

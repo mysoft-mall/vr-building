@@ -15,7 +15,7 @@ use app\components\Service;
 use yii\helpers\FileHelper;
 
 /**
- * 全景服务
+ * 素材服务
  * Class MaterialService
  * @package app\services
  */
@@ -120,8 +120,23 @@ class MaterialService extends Service
         return $res;
     }
 
+    /**
+     * 获取素材列表
+     * @param MaterialQueryModel $model
+     * @return array|\yii\db\ActiveRecord[]
+     */
     public function getList(MaterialQueryModel $model)
     {
         return Material::getList($model);
+    }
+
+    /**
+     * 删除素材
+     * @param $id
+     * @return bool
+     */
+    public function delete($id)
+    {
+        return Material::deleteAll('id=:id', [':id'=>$id]) > 0;
     }
 }

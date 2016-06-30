@@ -37,4 +37,26 @@ class PanoramaController extends Controller
         $data = PanoramaService::Instance()->getList($model);
         Yii::$app->response->successList($data, $model->getPagination());
     }
+
+    /**
+     * 删除全景
+     *
+     * 请求方法：POST
+     *
+     * 请求参数
+     * id 全景图ID
+     *
+     */
+    public function actionDelete()
+    {
+        $id = Yii::$app->request->post('id');
+        $id = 1;
+        $res = PanoramaService::Instance()->delete($id);
+        if($res){
+            Yii::$app->response->success('删除成功');
+        }else{
+            Yii::$app->response->error('删除失败');
+        }
+
+    }
 }
