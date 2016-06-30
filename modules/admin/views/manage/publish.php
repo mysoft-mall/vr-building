@@ -12,6 +12,7 @@
 <?php $this->beginBlock('css') ?>
     <link rel="stylesheet" href="<?=$baseUrl?>/css/manage/publish.css"/>
 <?php $this->endBlock() ?>
+<!--    content     -->
 <div class="pad-publisher">
     <div class="tab-nav">
         <button class="btn-scene">全景图片</button>

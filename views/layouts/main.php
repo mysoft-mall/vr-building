@@ -44,8 +44,8 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">发布 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/material')?>">素材库</a></li>
+                    <li class="btn-nav active"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/publish')?>">发布 <span class="sr-only">(current)</span></a></li>
+                    <li class="btn-nav"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/material')?>">素材库</a></li>
                 </ul>
             </div>
         </div>
@@ -64,6 +64,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
     </footer>
 <script src="<?=$baseUrl?>/dist/jquery/jquery.min.js"></script>
 <script src="<?=$baseUrl?>/dist/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=$baseUrl?>/js/global.js"></script>
 <?php
 if (isset($this->blocks['js'])) { ?>
     <?= $this->blocks['js'] ?>

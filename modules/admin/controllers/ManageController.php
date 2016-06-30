@@ -22,8 +22,18 @@ class ManageController extends Controller
      * Renders the index view for the module
      * @return string
      */
-    public function actionMater()
+    public function actionPublish()
     {
         return $this->render('publish');
+    }
+
+
+    /**
+     * Renders the index view for the module
+     * @return string
+     */
+    public function actionMaterial()
+    {
+        return $this->render('material');
     }
 }
