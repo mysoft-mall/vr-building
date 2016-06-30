@@ -10,7 +10,7 @@
     $baseUrl = \Yii::$app->urlManager->getBaseUrl();
 ?>
 <?php $this->beginBlock('css') ?>
-    <link rel="stylesheet" href="<?=$baseUrl?>/css/publish.css"/>
+    <link rel="stylesheet" href="<?=$baseUrl?>/css/manage/publish.css"/>
 <?php $this->endBlock() ?>
 <div class="pad-publisher">
     <div class="tab-nav">
@@ -38,3 +38,6 @@
         </div>
     </div>
 </div>
+<?php $this->beginBlock('js') ?>
+    <script src="<?=$baseUrl?>/js/manage/publish.js"></script>
+<?php $this->endBlock() ?>
