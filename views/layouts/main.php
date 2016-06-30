@@ -22,6 +22,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="<?=$baseUrl?>/dist/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?=$baseUrl?>/css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <?php $this->head() ?>
     <?php
     if (isset($this->blocks['css'])) { ?>
@@ -44,8 +45,9 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="btn-nav active"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/publish')?>">发布 <span class="sr-only">(current)</span></a></li>
-                    <li class="btn-nav"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/material')?>">素材库</a></li>
+                    <?php $actionId = Yii::$app->controller->action->id; ?>
+                    <li class="btn-nav <?= ($actionId === 'index' || $actionId === 'publish') ? 'active' : '' ?>"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/publish')?>">发布 <span class="sr-only">(current)</span></a></li>
+                    <li class="btn-nav <?= ($actionId === 'material') ? 'active' : '' ?>"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/material')?>">素材库</a></li>
                 </ul>
             </div>
         </div>
@@ -58,7 +60,6 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
     <footer class="x-footer">
         <div class="container">
             <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
             <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
     </footer>

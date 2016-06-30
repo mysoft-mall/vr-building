@@ -21,23 +21,29 @@
     </div>
     <div class="pad-main">
         <div class="x-row">
-            <input type="text" name="" id="" class="pic-name" placeholder="输入全景图片标题">
+            <span class="tip-statistics">已有全景素材 <b>23</b> 个</span>
+            <label class="select_all" for="">
+                <button class="btn-select-material"></button>
+                全选
+            </label>
+            <button class="pull-right x-button ">上传</button>
         </div>
         <div class="pad-function">
-            <div class="x-row btn-bar">
-                <button class="x-button btn-upload-pic" type="button">上传全景图片</button>
-                <button class="x-button btn-select-pic" type="button">素材库选择全景图片</button>
-            </div>
-            <!--    已上传全景图片区域    -->
             <div class="zone-uploaded-pics hidden">
-
+                <div class="card-material">
+                    <div class="img-content">
+                        <button class="btn-select-material sub"></button>
+                        <img  class="cover-material"  src="" alt="">
+                    </div>
+                    <div class="word-content">
+                        <span>LXHFIGHT</span>
+                        <button class="btn-delete fa fa-trash"></button>
+                    </div>
+                </div>
             </div>
             <div class="zone-default">
-                请上传全景图片
+                还没有素材
             </div>
-        </div>
-        <div class="pad-uploader">
-            <button class="btn-publish">发布</button>
         </div>
     </div>
 </div>
