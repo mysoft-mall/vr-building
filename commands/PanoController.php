@@ -17,19 +17,12 @@ use yii\helpers\FileHelper;
  */
 class PanoController extends Controller
 {
-    public function actionHandle($id)
+    public function actionHandle($inputImg)
     {
         $krpanoPath = \Yii::$app->basePath . '/bin/krpano/krpanotools';
-        $panoPath = \Yii::getAlias('@runtime') . '/pano/'.$id;
-        $pictures = $panoPath .'/*.jpg';
-        $vtourPath = $panoPath.'/vtour';
-        $html = $panoPath.'/vtour/index.html';
-        $command = $krpanoPath . ' makepano -config=templates/vtour-multires.config '.$pictures;
-        echo $command;
+        $command = $krpanoPath . ' makepano -config=templates/vtour-multires.config '.$inputImg;
+        var_dump($command);
         exec($command, $result);
-        if(is_file($html)){
-            $destPath = \Yii::$app->basePath.'/web/pano/'.$id;
-            FileHelper::copyDirectory($vtourPath, $destPath);
-        }
+var_dump($result);
     }
 }

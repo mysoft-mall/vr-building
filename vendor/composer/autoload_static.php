@@ -84,6 +84,17 @@ class ComposerStaticInitc587bb376d8c4eddc06ba372ac301c72
                 0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
             ),
         ),
+        'G' => 
+        array (
+            'Gregwar\\Image' => 
+            array (
+                0 => __DIR__ . '/..' . '/gregwar/image',
+            ),
+            'Gregwar\\Cache' => 
+            array (
+                0 => __DIR__ . '/..' . '/gregwar/cache',
+            ),
+        ),
         'D' => 
         array (
             'Diff' => 

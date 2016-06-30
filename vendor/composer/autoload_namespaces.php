@@ -7,5 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
+    'Gregwar\\Image' => array($vendorDir . '/gregwar/image'),
+    'Gregwar\\Cache' => array($vendorDir . '/gregwar/cache'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
 );
