@@ -42,14 +42,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'admin/manage/index',
+                'material/upload' => 'admin/material/upload',
+                'material/publish' => 'admin/material/generate',
+                'material/list' => 'admin/material/list',
+                'panorama/list' => 'admin/panorama/list',
             ],
         ],
-        */
+
     ],
     'modules' => [
         'admin' => [
