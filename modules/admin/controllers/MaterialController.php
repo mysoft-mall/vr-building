@@ -2,7 +2,8 @@
 namespace app\modules\admin\controllers;
 
 use app\models\Material;
-use app\services\PanoService;
+use app\models\query\MaterialQueryModel;
+use app\services\MaterialService;
 use Gregwar\Image\Image;
 use yii\helpers\FileHelper;
 use yii\web\Controller;
@@ -16,12 +17,6 @@ use Yii;
  */
 class MaterialController extends Controller
 {
-    public function actionList()
-    {
-        $data = PanoService::Instance()->getList();
-        Yii::$app->response->successList($data);
-    }
-
     /**
      * 上传全景图片
      */
@@ -38,11 +33,11 @@ class MaterialController extends Controller
         unset($tempImg);
 
         $hash = substr(md5_file($file->tempName), 8, 8);
-        $path = PanoService::Instance()->getMaterialPath();
+        $path = MaterialService::Instance()->getMaterialPath();
         FileHelper::createDirectory($path);
         $name = $path.'/'.$hash.'.'.$file->getExtension();
         if($file->saveAs($name)) {
-            $thumbFile = PanoService::Instance()->getThumbPath()."/{$hash}.jpg";
+            $thumbFile = MaterialService::Instance()->getThumbPath()."/{$hash}.jpg";
             if(!is_file($thumbFile)){
                 $img = Image::open($name);
                 $img->zoomCrop(200, 200)->save($thumbFile);
@@ -73,12 +68,31 @@ class MaterialController extends Controller
             Yii::$app->response->error('无效的素材');
         }
         
-        $res = PanoService::Instance()->generate($hashes);
+        $res = MaterialService::Instance()->generate($hashes);
 
         if(!$res){
             Yii::$app->response->error('生成失败');
         }
         Yii::$app->response->success();
+    }
+
+    /**
+     * 获取素材列表
+     *
+     * 请求方法：GET
+     *
+     * 请求参数
+     * page 页码
+     * pageSize 每页数量
+     *
+     */
+    public function actionList()
+    {
+        $model = new MaterialQueryModel();
+        $model->setAttributes(Yii::$app->request->get(), false);
+
+        $data = MaterialService::Instance()->getList($model);
+        Yii::$app->response->successList($data, $model->getPagination());
     }
     
 }

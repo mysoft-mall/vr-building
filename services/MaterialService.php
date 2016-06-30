@@ -7,17 +7,19 @@
 
 namespace app\services;
 
+use app\models\Material;
 use app\models\Panorama;
+use app\models\query\MaterialQueryModel;
 use Yii;
 use app\components\Service;
 use yii\helpers\FileHelper;
 
 /**
  * 全景服务
- * Class PanoService
+ * Class MaterialService
  * @package app\services
  */
-class PanoService extends Service
+class MaterialService extends Service
 {
     public function getMaterialPath()
     {
@@ -118,4 +120,8 @@ class PanoService extends Service
         return $res;
     }
 
+    public function getList(MaterialQueryModel $model)
+    {
+        return Material::getList($model);
+    }
 }
