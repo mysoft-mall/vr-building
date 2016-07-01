@@ -51,7 +51,7 @@ jQuery(function() {
                        return;
                    }
                    if( isSupportBase64 ) {
-                       $wrap.append( '<div class="pre-parent-div" > <div class="pre-img-container"> <img src=" '+ src+' " /> </div><div class="pre-foot"> <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a></div></div>' );
+                       $wrap.append( '<div class="pre-parent-div uploaded-pics" > <div class="pre-img-container"> <img src=" '+ src+' " /> </div><div class="pre-foot"> <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a></div></div>' );
                    } else {
                        $.ajax('./server/preview.php', {
                            method: 'POST',
@@ -59,7 +59,7 @@ jQuery(function() {
                            dataType:'json'
                        }).done(function( response ) {
                            if (response.result) {
-                            $wrap.append( '<div class="pre-parent-div" > <div class="pre-img-container"> <img src=" '+ response.result +' " /> </div><div class="pre-foot" > <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a> </div> </div>' );
+                            $wrap.append( '<div class="pre-parent-div uploaded-pics" > <div class="pre-img-container"> <img src=" '+ response.result +' " /> </div><div class="pre-foot" > <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a> </div> </div>' );
                            } else {
                                $wrap.text("预览出错");
                            }
@@ -177,7 +177,7 @@ jQuery(function() {
 	        dataType:'json',
 	        success: function(data){
 	        	 
-	        	 //loadData();
+	        	 loadData();
 
 	        },
 	        error :function(){

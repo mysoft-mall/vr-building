@@ -6,6 +6,7 @@
 
 var hashes = [], uploadedImage = 0,
     uploader,
+    selectedMaterial = 0,
     panoramaUrl = $('.jumpToPanorama').val()
     ;
 
@@ -24,10 +25,36 @@ var component = {
 var methods = {
     reset: function(){
         uploader.reset();
+        selectedMaterial= 0;
         component.picName.val('');
         component.textStatus.css('color', '');
         component.zoneUploadedPics.empty().addClass('hidden');
         component.zoneDefault.removeClass('hidden');
+    },
+    toggleHashes: function(hash){
+        if(hashes.length === 0){
+            hashes.push(hash);
+            return true;
+        }
+        for(var i = 0; i < hashes.length; i++){
+            if(hashes[i] === hash){
+                hashes.splice(i,1);
+                return true;
+            }
+        }
+        hashes.push(hash);
+        return false;
+    },
+    hasHash: function(hash){
+        if(hashes.length === 0){
+            return false;
+        }
+        for(var i = 0; i < hashes.length; i++){
+            if(hashes[i] === hash){
+                return true;
+            }
+        }
+        return false;
     }
 }
 
@@ -155,15 +182,13 @@ jQuery(function() {
     });
 
     uploader.on( 'uploadSuccess', function( file , response) {
-        var $progressText = $( '.pre-img-progress[data-id="'+file.id+'"]').find('.progress-text').eq(0);
-        $progressText.text('上传成功');
+        var $progressText = $( '.pre-img-progress').find('.progress-text').eq(0);
+        $progressText.html('<span class="fa fa-spinner fa-spin"></span>发布中...');
 
         // 将上传给后台的全景图片hash值保存在全局中
         hashes.push(response.data.hs);
 
         uploadedImage--;
-
-        console.log(uploadedImage);
 
         if(uploadedImage === 0){
             $.ajax('/admin/material/generate', {
@@ -222,9 +247,33 @@ jQuery(function() {
             component.picName.addClass('error').val('请输入标题');
         }else{
             if ( state === 'uploading' ) {
+
                 uploader.stop();
             } else {
-                uploader.upload();
+                if(($('.zone-uploaded-pics.publish>.pre-parent-div.uploaded-pics').length === 0) && (hashes.length !== 0)){
+                    $.ajax('/admin/material/generate', {
+                        data:{
+                            title: component.picName.val(),
+                            hashes: hashes
+                        },
+                        method: 'POST',
+                        dataType: 'json'
+                    }).done(function(res){
+                        hashes = [];
+                        uploadedImage = 0;
+                        if(res.result){
+                            component.textStatus.text('发布成功');
+                            component.linkStatus.html('您可以在<a  href="' + panoramaUrl + '">作品管理</a>中进行更多操作');
+                        }else{
+                            component.textStatus.text('发布失败').css('color', '#ff2e34');
+                            component.linkStatus.html('点击<a class="try_again"  href="javascript:void(0)" style="color:#ff2e34" class="jump">重新发布</a>再来一次');
+                        }
+                        component.padMain.addClass('hidden');
+                        component.padResult.removeClass('hidden');
+                    });
+                }else{
+                    uploader.upload();
+                }
             }
         }
 
@@ -245,7 +294,6 @@ var bindEvent = function(){
         component.padResult.addClass('hidden');
         methods.reset();
         component.padMain.removeClass('hidden');
-
     });
     // 从素材库中选择图片
     component.btnSelectPic.click(function(){
@@ -271,6 +319,12 @@ var bindEvent = function(){
                         var _html = template('test', {items: _data});
                         $(".zone-uploaded-pics.in-modal").html("").html(_html);
                         $('#modal-material-library').modal('show');
+
+                        $('.btn-select-material').each(function(){
+                            var _this = $(this);
+                            var hash = _this.data('hash');
+                            methods.hasHash(hash) && _this.addClass('selected fa fa-check');
+                        })
                     }
                 });
 
@@ -281,4 +335,38 @@ var bindEvent = function(){
         });
 
     })
+
+    $('body')
+        .on('click', '.btn-select-material', function(){
+            var _this = $(this);
+            if(_this.hasClass('selected')){
+                _this.removeClass('selected fa fa-check').html('');
+                selectedMaterial--;
+            }else{
+                _this.addClass('selected fa fa-check');
+                selectedMaterial++;
+            }
+            methods.toggleHashes(_this.data("hash"));
+            selectedMaterial === 0 ? $('.btn-confirm-material').addClass('hidden') : $('.btn-confirm-material').removeClass('hidden');
+        })
+        // 点击确定素材按钮
+        .on('click', '.btn-confirm-material', function(){
+            var materials = [];
+            if(component.zoneDefault.hasClass('hidden')){
+                component.zoneDefault.addClass('hidden');
+                component.zoneUploadedPics.removeClass('hidden');
+            }
+            $('.modal-body .btn-select-material.selected').each(function(){
+                var material = $(this).parent();
+                material.find('.btn-select-material').addClass('hidden');
+                materials.push(material);
+            });
+
+            $('.zone-uploaded-pics.publish .pre-parent-div.in-material').remove();
+
+            for(var i = 0; i < materials.length; i++){
+                component.zoneUploadedPics.append(materials[i]);
+            }
+            $('#modal-material-library').modal('hide');
+        })
 }();

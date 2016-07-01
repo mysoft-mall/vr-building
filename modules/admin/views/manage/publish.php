@@ -29,7 +29,7 @@
                 <button class="x-button btn-select-pic" type="button">素材库选择全景图片</button>
             </div>
             <!--    已上传全景图片区域    -->
-            <div class="zone-uploaded-pics hidden">
+            <div class="zone-uploaded-pics publish hidden">
 
             </div>
             <div class="zone-default">
@@ -51,7 +51,8 @@
 
 <script id="test" type="text/html">
     {{each items as item}}
-    <div class="pre-parent-div" >
+    <div class="pre-parent-div in-material"  >
+        <button class="btn-select-material" data-hash="{{item.hash}}"></button>
         <div class="pre-img-container">
             <img src="{{item.thumb_url}}" height="200" width="200"/>
             <div class="pre-img-progress hidden" data-id="{{item.id}}">
@@ -84,7 +85,10 @@
                         还没有素材
                     </div>
                 </div>
-                <div id="Pagination" class="pagination" style="height:65px"><!-- 这里显示分页 --></div>
+                <div id="Pagination" class="pagination" style="height:65px">
+                    <!-- 这里显示分页 -->
+                </div>
+                <button class="btn-confirm-material hidden">确定</button>
             </div>
         </div>
     </div>
