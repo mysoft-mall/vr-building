@@ -46,6 +46,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
                     <?php $actionId = Yii::$app->controller->action->id; ?>
                     <li class="btn-nav <?= ($actionId === 'index' || $actionId === 'publish') ? 'active' : '' ?>"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/publish')?>">发布 <span class="sr-only">(current)</span></a></li>
                     <li class="btn-nav <?= ($actionId === 'material') ? 'active' : '' ?>"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/material')?>">素材库</a></li>
+                    <li class="btn-nav <?= ($actionId === 'panorama') ? 'active' : '' ?>"><a href="<?= \Yii::$app->urlManager->createUrl('admin/manage/panorama')?>">作品</a></li>
                 </ul>
             </div>
         </div>
@@ -63,7 +64,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
     </footer>
 <script src="<?=$baseUrl?>/dist/jquery/jquery.min.js"></script>
 <script src="<?=$baseUrl?>/dist/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?=$baseUrl?>/js/global.js"></script>
+<script src="<?=$baseUrl?>/js/global.js?v=354563534"></script>
 <?php
 if (isset($this->blocks['js'])) { ?>
     <?= $this->blocks['js'] ?>

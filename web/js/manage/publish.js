@@ -30,6 +30,8 @@ jQuery(function() {
         // swf文件路径
         swf: './dist/webuploader/Uploader.swf',
 
+        fileVal :"pano",
+
         chunkSize: 512 * 1024 * 100,
 
         // 文件接收服务端。
@@ -114,9 +116,13 @@ jQuery(function() {
         $percent.css( 'width', percentage * 100 + '%' );
     });
 
-    uploader.on( 'uploadSuccess', function( file ) {
+    uploader.on( 'uploadSuccess', function( file , response) {
         $( '#'+file.id ).find('p.state').text('已上传');
         alert("上传成功");
+        $.ajax('/admin/material/generate', {
+
+        })
+        console.log(file);
         //$list.html("");
     });
 

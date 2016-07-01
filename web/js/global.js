@@ -5,6 +5,3 @@
 
 "use strict";
 
-var bindEvent = function(){
-
-}();
