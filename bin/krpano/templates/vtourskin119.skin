@@ -27,6 +27,7 @@ xmltemplate_additional_file=xml/skin/vtourskin_design_ultra_light.xml
 xmltemplate_additional_file=xml/skin/vtourskin_design_117.xml
 xmltemplate_additional_file=xml/skin/vtourskin_design_117round.xml
 xmltemplate_additional_file=xml/skin/vtourskin.png
+xmltemplate_additional_file=xml/skin/logo.png
 xmltemplate_additional_file=xml/skin/vtourskin_light.png
 xmltemplate_additional_file=xml/skin/vtourskin_hotspot.png
 xmltemplate_additional_file=xml/skin/vtourskin_mapspot.png
