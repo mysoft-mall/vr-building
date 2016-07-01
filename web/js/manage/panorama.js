@@ -36,26 +36,31 @@ jQuery(function() {
            });
 	}
 
-	loadData();
+	    loadData();
 
-    $("body").on("click",".a-dele",function(){
-	    var id=$(this).attr("data-id");
-		  $.ajax({
-	        type: 'POST',
-	        url:  '/panorama/delete',
-	        data: { id:id },
-	        dataType:'json',
-	        success: function(data){
-	        	 
-	        	 //loadData();
+      $("body")
+      .on("click",".a-dele",function(){
+  	    var id=$(this).attr("data-id");
+  		  $.ajax({
+  	        type: 'POST',
+  	        url:  '/panorama/delete',
+  	        data: { id:id },
+  	        dataType:'json',
+  	        success: function(data){
+  	        	 
+  	        	 loadData();
 
-	        },
-	        error :function(){
-	            
-	        }
-	    });
-    });
-   
+  	        },
+  	        error :function(){
+  	            
+  	        }
+  	    });
+      })
+      .on("click",".a-qrcode",function(){
+          var _url=$(this).attr("data-url");
+          $("#qrcode").html("");
+          jQuery('#qrcode').qrcode({width: 64,height: 64,text:_url});
+      });
 
 });
 

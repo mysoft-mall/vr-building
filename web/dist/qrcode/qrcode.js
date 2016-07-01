@@ -135,7 +135,8 @@ function QRBitBuffer() {
             for (var r = -1; r <= 7; r++) {
                 if (row + r <= -1 || this.moduleCount <= row + r) continue;
                 for (var c = -1; c <= 7; c++) {
-                    if (col + c <= -1 || this.moduleCount <= col + c) continue;
+                    if (col + c <= -1 || this.moduleCount <= col + c) 
+                        continue;
 <= r && r <= 6 && (c == 0 || c == 6) || 0 <= c && c <= 6 && (r == 0 || r == 6) || 2 <= r && r <= 4 && 2 <= c && c <= 4 ? this.modules[row + r][col + c] = !0 : this.modules[row + r][col + c] = !1;
                 }
             }

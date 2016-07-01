@@ -72,7 +72,7 @@
                  <a data-url="{{item.panorama_url}}" class="a-qrcode">分享 </a> 
               </td>
               <td>
-                  <a  data-id="{{item.id}}">删除</a>
+                  <a  data-id="{{item.id}}" class="a-dele">删除</a>
               </td>
             </tr>
         {{/each}}
