@@ -8,6 +8,8 @@
         enabled="false"
         align="lefttop"
         x="10" y="5"
+        height="95"
+        width="250"
         scale.mobile="0.5"
         />
         
