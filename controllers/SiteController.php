@@ -117,4 +117,12 @@ enctype="multipart/form-data">
         echo '<iframe src="'.Yii::$app->urlManager->getHostInfo().'/pano/'.$id.'" height="100%" width="100%" ></iframe>';
     }
 
+    /**
+     * 微信分享配置
+     * @param string $url
+     */
+    public function actionWxConfig($url='')
+    {
+        echo \weixin\widgets\ShareConfigWidget::widget(['account'=>Yii::$app->weixin->getAccount(),'debug'=>true, 'url'=>$url, 'HTMLBlock'=>false]);
+    }
 }

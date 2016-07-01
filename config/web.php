@@ -6,6 +6,14 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'extensions' => [
+        [
+            'name' => 'craa\weixin-sdk',
+            'alias' => [
+                '@weixin' => '@app/components/weixin'
+            ],
+        ]
+    ],
     'components' => [
         'response' => [
             'class' => 'app\components\Response',
@@ -16,7 +24,16 @@ $config = [
             'enableCsrfValidation' => false,
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            //'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\MemCache',
+            'useMemcached' => true,
+            'servers' => [
+                [
+                   'host' => '127.0.0.1',
+                   'port' => 11211,
+                   'weight' => 100,
+                ],
+            ],
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -53,6 +70,21 @@ $config = [
                 'material/delete' => 'admin/material/delete',
                 'panorama/list' => 'admin/panorama/list',
                 'panorama/delete' => 'admin/panorama/delete',
+                'wx-config' => 'site/wx-config',
+            ],
+        ],
+        'weixin'=>[
+            'class' => '\weixin\Weixin',
+            'debug' => true,
+            'components' => [
+                'account' => [
+                    'token' => 'weixin',
+                    'appid' => 'wx2b0939a7c90c1092',
+                    'appsecret' => 'd34bb0cd5a182896f2b626b21523cbe3',
+                ],
+                'cache' => [
+                    'class' => 'weixin\caching\FileCache',
+                ]
             ],
         ],
 
