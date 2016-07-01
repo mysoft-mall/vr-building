@@ -55,6 +55,8 @@ jQuery(function() {
         // 不压缩image
         resize: false,
 
+        compress:false,
+
         // swf文件路径
         swf: './dist/webuploader/Uploader.swf',
 
