@@ -1,0 +1,78 @@
+/*  material CSS file  */
+button,input{ height:100%; outline:none; border:none;}
+.pad-publisher{
+    position:relative;
+    height: auto;
+    width:100%;
+    top:50%;
+    left:50%;
+    border:1px solid #ddd;
+    box-shadow:0 0px 6px #ddd;
+    background-color:white;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.pad-publisher .tab-nav{ height:50px;background-color:#f8f8f8; }
+.pad-publisher .tab-nav>.btn-scene{ height:100%; min-width:130px; background-color:white;
+    border:none;  border-top:3px solid white; color:#666
+}
+.tip-statistics{line-height:35px; color:#666; height:100%; display:inline-block;}
+.tip-statistics b{color:#439510;}
+
+.select_all{   color:#999; font-weight:100; line-height:35px; height:35px; margin:0;margin-left:20px; }
+button.btn-select-material{border:1px solid #ddd; background-color:#fafafa;  height:20px; width:20px; font-size:17px; margin-right:10px; position:relative;top:3px; }
+button.btn-select-material.sub{}
+
+.pad-main{ }
+.pad-main .x-row{height:55px; padding:10px 20px;}
+.pad-main .x-row input{ height:100%; padding:0 10px; width:100%; border:1px solid #ddd;}
+.pad-main .pad-function{ background-color: #f6f6f6;height:640px; }
+.pad-main .x-button{
+    background-color:#e4e4e4; padding: 0 30px;height:100%; border:none; color:#666;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    -ms-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    transition: background-color .3s;
+}
+.pad-main .x-button:hover{ background-color:#4faf13;color:white; }
+.pad-main .zone-uploaded-pics, .pad-main .zone-default{height:640px; background-color:#eee;}
+.pad-main .zone-default{height:620px; color:#ccc; overflow-y: auto }
+
+.zone-uploaded-pics .card-material{}
+.zone-uploaded-pics .card-material .img-content{}
+.zone-uploaded-pics .img-content .cover-material{}
+.zone-uploaded-pics .card-material .text-content{}
+.zone-uploaded-pics .text-content .name-pic{}
+.zone-uploaded-pics .text-content .btn-delete{}
+
+
+.table-pano td{
+    padding:5px 3px;
+    height:60px;
+    border-bottom: 1px solid #EEE;
+}
+
+.table-pano tbody tr{
+    background-color:#fff; 
+}
+
+.td-checkbox{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pano-img{
+   float:left;
+   margin-right: 5px;
+}
+.pano-info{
+   float:left;
+
+}
+
+.title{color:#333;}
+
