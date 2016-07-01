@@ -57,6 +57,10 @@ class MaterialController extends Controller
 
     /**
      * 生成全景
+     *
+     * 请求方法：GET
+     *
+     * 请求参数
      * @param $hashes
      */
     public function actionGenerate()
@@ -64,11 +68,11 @@ class MaterialController extends Controller
         set_time_limit(40);
         ignore_user_abort(true);
         $hashes = Yii::$app->request->post('hashes');
+        $title = Yii::$app->request->post('title');
         if(empty($hashes)){
             Yii::$app->response->error('无效的素材');
         }
-        $title = Yii::$app->request->post('title');
-        
+
         $res = MaterialService::Instance()->generate($hashes, $title);
 
         if(!$res){
