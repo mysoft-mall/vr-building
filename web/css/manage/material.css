@@ -40,7 +40,7 @@ button.btn-select-material.sub{}
 }
 .pad-main .x-button:hover{ background-color:#4faf13;color:white; }
 .pad-main .zone-uploaded-pics, .pad-main .zone-default{height:640px; background-color:#eee;}
-.pad-main .zone-default{line-height:640px; color:#ccc; text-align: center; font-size: 40px; font-weight: 900}
+.pad-main .zone-default{height:620px; color:#ccc; overflow-y: auto }
 
 .zone-uploaded-pics .card-material{}
 .zone-uploaded-pics .card-material .img-content{}
@@ -48,4 +48,22 @@ button.btn-select-material.sub{}
 .zone-uploaded-pics .card-material .text-content{}
 .zone-uploaded-pics .text-content .name-pic{}
 .zone-uploaded-pics .text-content .btn-delete{}
+
+.webuploader-element-invisible{ display: none !important; }
+.div-thumb{
+    
+    float:left;
+    
+    margin:15px;
+}
+
+.div-dele span{ 
+    color:#000; 
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 220px;   
+}
+.a-dele{float: right;}
+
 
