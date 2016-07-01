@@ -22,6 +22,8 @@ jQuery(function() {
         // 不压缩image
         resize: false,
 
+        compress:false,
+
         auto :true,
 
         // swf文件路径
