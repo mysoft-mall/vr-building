@@ -29,7 +29,7 @@ button.btn-select-material.sub{}
 .pad-main{ }
 .pad-main .x-row{height:55px; padding:10px 20px;}
 .pad-main .x-row input{ height:100%; padding:0 10px; width:100%; border:1px solid #ddd;}
-.pad-main .pad-function{ background-color: #f6f6f6;height:640px; }
+.pad-main .pad-function{background-color: #f6f6f6;height: 620px;}
 .pad-main .x-button{
     background-color:#e4e4e4; padding: 0 30px;height:100%; border:none; color:#666;
     -webkit-transition: background-color .3s;
@@ -40,7 +40,7 @@ button.btn-select-material.sub{}
 }
 .pad-main .x-button:hover{ background-color:#4faf13;color:white; }
 .pad-main .zone-uploaded-pics, .pad-main .zone-default{height:640px; background-color:#eee;}
-.pad-main .zone-default{height:620px; color:#ccc; overflow-y: auto }
+.pad-main .zone-default{height:620px;color:#ccc;padding: 20px;overflow-y: auto;}
 
 .zone-uploaded-pics .card-material{}
 .zone-uploaded-pics .card-material .img-content{}
@@ -51,19 +51,30 @@ button.btn-select-material.sub{}
 
 .webuploader-element-invisible{ display: none !important; }
 .div-thumb{
-    
     float:left;
-    
-    margin:15px;
+    margin:0 20px 15px 0;
+    padding:10px;
+    background-color: white;
+    box-shadow:0 3px 6px #ddd;
 }
-
-.div-dele span{ 
-    color:#000; 
+.div-thumb img{height:200px; width:200px;}
+.div-dele{
+    height:35px;  font-size:0;
+}
+.div-dele span, .div-dele a{
+    height:35px;
+    font-size:14px;
+    display:inline-block;
+    line-height:40px;}
+.div-dele span{
+    color:#000;
+    width:80%;
     text-align: left;
     white-space: nowrap;
+    overflow:hidden;
     text-overflow: ellipsis;
-    max-width: 220px;   
+    max-width: 220px;
 }
-.a-dele{float: right;}
+.a-dele{float: right; width:20%; text-align:right;}
 
 

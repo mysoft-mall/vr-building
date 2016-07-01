@@ -39,7 +39,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">CloudVR</a>
+                <a class="navbar-brand" href="#">Mysoft VR</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
