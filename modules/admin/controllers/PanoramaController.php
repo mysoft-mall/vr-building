@@ -50,7 +50,6 @@ class PanoramaController extends Controller
     public function actionDelete()
     {
         $id = Yii::$app->request->post('id');
-        $id = 1;
         $res = PanoramaService::Instance()->delete($id);
         if($res){
             Yii::$app->response->success('删除成功');
