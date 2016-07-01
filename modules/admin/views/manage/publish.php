@@ -23,7 +23,8 @@
         </div>
         <div class="pad-function">
             <div class="x-row btn-bar">
-                <button class="x-button btn-upload-pic" type="button">上传全景图片</button>
+                <div id="picker">上传全景图片</div>
+<!--                <button class="x-button btn-upload-pic" type="button">上传全景图片</button> -->
                 <button class="x-button btn-select-pic" type="button">素材库选择全景图片</button>
             </div>
             <!--    已上传全景图片区域    -->
@@ -40,5 +41,6 @@
     </div>
 </div>
 <?php $this->beginBlock('js') ?>
+    <script src="<?=$baseUrl?>/dist/webuploader/webuploader.js"></script>
     <script src="<?=$baseUrl?>/js/manage/publish.js"></script>
 <?php $this->endBlock() ?>

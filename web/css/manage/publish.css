@@ -20,6 +20,40 @@ button,input{ height:100%; outline:none; border:none;}
     border:none;  border-top:3px solid white; color:#666
 }
 .pad-publisher .tab-nav>.btn-scene.selected{ border-top: 3px solid #4faf13; }
+
+#picker{height:35px;display:inline-block;width:140px;float:left;position: relative;margin-right: 10px;}
+#picker .webuploader-pick{
+    background-color:#4faf13;
+    /* padding: 0 15px; */
+    height:100%;
+    width: 100%;
+    border:none;
+    color:white;
+    text-align: center;
+    margin-right:8px;
+    line-height: 35px;
+    position: absolute;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    -ms-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    transition: background-color .3s;
+}
+.webuploader-element-invisible{opacity:0.0;}
+.webuploader-element-invisible:hover { cursor: pointer}
+.zone-uploaded-pics {
+    padding:20px;
+}
+.pre-parent-div {display:inline-block;padding: 10px 10px 0 10px;background-color:white;
+    -webkit-box-shadow:  0 3px 6px #ddd;
+    -moz-box-shadow:  0 3px 6px #ddd;
+    box-shadow: 0 3px 6px #ddd;}
+.pre-img-container{}
+.pre-img-container img{}
+.pre-foot{height: 35px;text-align:right;  }
+.pre-foot a{ line-height:35px; height:35px;}
+.pre-foot a:hover{ color:firebrick; text-decoration: none;cursor:pointer; }
+
 .pad-main{ }
 .pad-main .x-row{height:55px; padding:10px 20px;}
 .pad-main .x-row input{ height:100%; padding:0 10px; width:100%; border:1px solid #ddd;}
