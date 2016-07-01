@@ -17,13 +17,15 @@ var component = {
 
     padMain: $('.pad-main'),                        // 上传操作主要框
     zoneUploadedPics:$('.zone-uploaded-pics'),      // 显示上传全景图区域
-    zoneDefault: $('.zone-default')                 // 没有上传全景图片是显示的默认图片
+    zoneDefault: $('.zone-default'),                // 没有上传全景图片是显示的默认图片
+    btnSelectPic: $('.btn-select-pic')              // 素材库选择全景图片按钮
 };
 
 var methods = {
     reset: function(){
         uploader.reset();
         component.picName.val('');
+        component.textStatus.css('color', '');
         component.zoneUploadedPics.empty().addClass('hidden');
         component.zoneDefault.removeClass('hidden');
     }
@@ -123,7 +125,7 @@ jQuery(function() {
                                         '   </div>' +
                                         '   <div class="pre-foot" >' +
                                         '       <span class="filename nowrap" title="' + file.name + '">' + file.name + '</span>' +
-                                        '       <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a> ' +
+                                        '       <a href="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a> ' +
                                         '   </div> ' +
                                         '</div>'
                                     );
@@ -184,11 +186,6 @@ jQuery(function() {
             });
         }
 
-
-
-
-
-        //$list.html("");
     });
 
     uploader.on( 'uploadError', function( file ) {
@@ -210,7 +207,7 @@ jQuery(function() {
         if ( state === 'uploading' ) {
             $btn.text('暂停上传');
         } else {
-            $btn.text('开始上传');
+            $btn.text('发布');
         }
     });
 
@@ -235,17 +232,51 @@ jQuery(function() {
 
 });
 
-//绑定时间
+//绑定事件
 var bindEvent = function(){
     component.picName.focus(function(){
         var _this = $(this);
         _this.hasClass('error') &&
         _this.removeClass('error').val('');
-    })
+    });
     component.padResult.on('click', '.try_again', function(){
         component.padResult.addClass('hidden');
         methods.reset();
         component.padMain.removeClass('hidden');
+
+    });
+    // 从素材库中选择图片
+    component.btnSelectPic.click(function(){
+        $.ajax({
+            type: 'get',
+            url:  '/material/list',
+            data: { page:1, pageSize:50 },
+            dataType:'json',
+            success: function(data){
+
+                $("#Pagination").pagination(data.total, {
+                    items_per_page:8,
+                    num_display_entries:10,
+                    num_edge_entries:2,
+                    prev_text :"上一页",
+                    next_text :"下一页",
+                    callback : function(page_index){
+                        var i=(page_index)*8 ,lastIndex=i+8,_data=[];
+                        lastIndex> data.items.length ? lastIndex=data.items.length :null;
+                        for(i;i<lastIndex;i++){
+                            _data.push(data.items[i]);
+                        }
+                        var _html = template('test', {items: _data});
+                        $(".zone-uploaded-pics.in-modal").html("").html(_html);
+                        $('#modal-material-library').modal('show');
+                    }
+                });
+
+            },
+            error :function(data){
+
+            }
+        });
 
     })
 }();

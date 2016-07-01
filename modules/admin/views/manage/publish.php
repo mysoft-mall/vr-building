@@ -11,6 +11,7 @@
 ?>
 <?php $this->beginBlock('css') ?>
     <link rel="stylesheet" href="<?=$baseUrl?>/css/manage/publish.css"/>
+    <link rel="stylesheet" href="<?=$baseUrl?>/dist/paging/pagination.css"/>
 <?php $this->endBlock() ?>
 <!--    content     -->
 <div class="pad-publisher">
@@ -33,7 +34,6 @@
             </div>
             <div class="zone-default">
                 请上传全景图片
-
             </div>
         </div>
         <div class="pad-uploader">
@@ -49,22 +49,50 @@
     </div>
 </div>
 
-<div class="modal fade" id="material-library">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Modal title</h4>
+<script id="test" type="text/html">
+    {{each items as item}}
+    <div class="pre-parent-div" >
+        <div class="pre-img-container">
+            <img src="{{item.thumb_url}}" height="200" width="200"/>
+            <div class="pre-img-progress hidden" data-id="{{item.id}}">
+                <span class="progress-text">已上传0%</span>
+                <span class="progress-bar"></span>
             </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
+        </div>
+        <div class="pre-foot" >
+            <span class="filename nowrap" title="' + file.name + '">{{item.file_name}}</span>
+            <a href="javascript:;" class="pre-img-dele" data-id="{{item.id}}">删除</a>
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+
+<?php $this->beginBlock('modal') ?>
+    <div class="modal fade" id="modal-material-library">
+        <div class="modal-dialog" >
+            <div class="modal-content" >
+                <div class="row-title">
+                    <span class="modal-title">素材库</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1.0; color:#ddd"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body" >
+                    <div class="zone-uploaded-pics in-modal" style="background-color:#eee;height:100%">
+
+                    </div>
+                    <div class="zone-default hidden" id="zone-thumb">
+                        还没有素材
+                    </div>
+                </div>
+                <div id="Pagination" class="pagination" style="height:65px"><!-- 这里显示分页 --></div>
             </div>
         </div>
     </div>
-</div>
-
+<?php $this->endBlock('modal') ?>
 
 <?php $this->beginBlock('js') ?>
+    <script src="<?=$baseUrl ?>/dist/template.js"></script>
+    <script src="<?=$baseUrl ?>/dist/paging/jquery.pagination.js"></script>
     <script src="<?=$baseUrl?>/dist/webuploader/webuploader.js"></script>
     <script src="<?=$baseUrl?>/js/manage/publish.js"></script>
-<?php $this->endBlock() ?>
+<?php $this->endBlock('js') ?>

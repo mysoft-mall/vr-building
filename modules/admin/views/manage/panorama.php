@@ -71,7 +71,8 @@
                   </div>
               </td>
               <td>
-                 <a data-url="{{item.panorama_url}}" class="a-qrcode">分享 </a> 
+                 <a data-url="{{item.panorama_url}}" class="a-qrcode" style="margin-right:20px">分享 </a>
+                 <a href="{{item.panorama_url}}" target="_blank" class="" >浏览 </a>
               </td>
               <td>
                   <a  data-id="{{item.id}}" class="a-dele">删除</a>

@@ -58,7 +58,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
     </div>
     <footer class="x-footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+            <p class="pull-left">&copy; Mysoft <?= date('Y') ?></p>
             <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
     </footer>
