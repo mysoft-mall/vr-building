@@ -1,6 +1,16 @@
 /**
  * Created by liuxh04 on 2016/6/30.
  */
+
+"use strict";
+
+var hashes = [], uploadedImage = 0;
+
+var component = {
+    picName : $('.pic-name'),       // 图片标题输入框
+};
+
+
 // 文件上传
 jQuery(function() {
     var $ = jQuery,
@@ -44,6 +54,7 @@ jQuery(function() {
 
     // 当有文件添加进来的时候
     uploader.on( 'fileQueued', function( file ) {
+        $wrap.removeClass('hidden').siblings('.zone-default').addClass('hidden');
         uploader.makeThumb( file, function( error, src ) {
             if(file._info.width/file._info.height==2){
 
@@ -59,17 +70,23 @@ jQuery(function() {
                         return;
                     }
                     if( isSupportBase64 ) {
-                        $wrap.removeClass('hidden').siblings('.zone-default').addClass('hidden');
+                        console.log(file);
                         $wrap.append(
                                         '<div class="pre-parent-div" > ' +
                                         '   <div class="pre-img-container"> ' +
                                         '       <img src=" '+ src+' " /> ' +
+                                        '       <div class="pre-img-progress hidden" data-id=' + file.id + '>' +
+                                        '           <span class="progress-text">已上传0%</span>' +
+                                        '           <span class="progress-bar"></span>' +
+                                        '       </div>'+
                                         '   </div>' +
                                         '   <div class="pre-foot"> ' +
+                                        '       <span class="filename nowrap" title="' + file.name + '">' + file.name + '</span>' +
                                         '       <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a>' +
                                         '   </div>' +
                                         '</div>'
                                     );
+                        uploadedImage++;
                     } else {
                         $.ajax('/admin/material/upload', {
                             method: 'POST',
@@ -78,15 +95,20 @@ jQuery(function() {
                         }).done(function( response ) {
                             if (response.result) {
                                 $wrap.append(
-                                                '<div class="pre-parent-div" > ' +
-                                                '   <div class="pre-img-container"> ' +
-                                                '       <img src=" '+ response.result +' " /> ' +
-                                                '   </div>' +
-                                                '   <div class="pre-foot" >' +
-                                                '       <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a> ' +
-                                                '   </div> ' +
-                                                '</div>'
-                                            );
+                                        '<div class="pre-parent-div" > ' +
+                                        '   <div class="pre-img-container"> ' +
+                                        '       <img src=" '+ response.result +' " /> ' +
+                                        '       <div class="pre-img-progress hidden" data-id=' + file.id + '>' +
+                                        '           <span class="progress-text">已上传0%</span>' +
+                                        '           <span class="progress-bar"></span>' +
+                                        '       </div>'+
+                                        '   </div>' +
+                                        '   <div class="pre-foot" >' +
+                                        '       <span class="filename nowrap" title="' + file.name + '">' + file.name + '</span>' +
+                                        '       <a javascript="javascript:;" class="pre-img-dele" data-id="'+ file.id+'">删除</a> ' +
+                                        '   </div> ' +
+                                        '</div>'
+                                    );
                             } else {
                                 $wrap.text("预览出错");
                             }
@@ -102,27 +124,43 @@ jQuery(function() {
 
     // 文件上传过程中创建进度条实时显示。
     uploader.on( 'uploadProgress', function( file, percentage ) {
-        var $li = $( '#'+file.id ),
-            $percent = $li.find('.progress .progress-bar');
-
-        // 避免重复创建
-        if ( !$percent.length ) {
-            $percent = $('<div class="progress progress-striped active">' +
-                '<div class="progress-bar" role="progressbar" style="width: 0%">' +
-                '</div>' +
-                '</div>').appendTo( $li ).find('.progress-bar');
-        }
-        $li.find('p.state').text('上传中');
-        $percent.css( 'width', percentage * 100 + '%' );
+        var $progress = $( '.pre-img-progress[data-id="'+file.id+'"]');
+        var $progressBar = $progress.find('.progress-bar').eq(0),
+            $progressText = $progress.find('.progress-text').eq(0);
+        $progress.removeClass('hidden');
+        $progressText.text('已上传' + ( percentage * 100 ) +  '%');
+        $progressBar.css( 'width', percentage * 100 + '%' );
     });
 
     uploader.on( 'uploadSuccess', function( file , response) {
-        $( '#'+file.id ).find('p.state').text('已上传');
-        alert("上传成功");
-        $.ajax('/admin/material/generate', {
+        var $progressText = $( '.pre-img-progress[data-id="'+file.id+'"]').find('.progress-text').eq(0);
+        $progressText.text('').addClass('fa').addClass('fa-check');
 
-        })
-        console.log(file);
+        // 将上传给后台的全景图片hash值保存在全局中
+        hashes.push(response.data.hs);
+
+        uploadedImage--;
+
+        console.log(uploadedImage);
+
+        if(uploadedImage === 0){
+            $.ajax('/admin/material/generate', {
+                data:{
+                    title: component.picName.val(),
+                    hashes: hashes
+                },
+                method: 'POST',
+                dataType: 'json'
+            }).done(function(res){
+                hashes = [];
+                uploadedImage = 0;
+            });
+        }
+
+
+
+
+
         //$list.html("");
     });
 
@@ -153,13 +191,28 @@ jQuery(function() {
         $(this).parent().parent().remove();
         uploader.removeFile( $(this).attr("data-id") ,true);
     }).on('click', '.btn-publish', function(){
-        if ( state === 'uploading' ) {
-            uploader.stop();
-        } else {
-            uploader.upload();
+        // 判断是否为空
+        if(component.picName.val() === ''){
+            component.picName.addClass('error').val('请输入标题');
+        }else{
+            if ( state === 'uploading' ) {
+                uploader.stop();
+            } else {
+                uploader.upload();
+            }
         }
+
     });
 
 
 
 });
+
+//绑定时间
+var bindEvent = function(){
+    component.picName.focus(function(){
+        var _this = $(this);
+        _this.hasClass('error') &&
+        _this.removeClass('error').val('');
+    })
+}();

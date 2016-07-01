@@ -4,3 +4,4 @@ body{  overflow-x: hidden!important;  }
 .navbar .navbar-brand{color:#4faf13!important; }
 .x-container{  height: 100%; padding: 52px 0;  width:100%; position: absolute; left:0; top:0; z-index: 100; background-color: #f6f6f6;  }
 .x-footer{  border-top:1px solid #ddd;  height:52px; width: 100%; position:absolute; left:0; bottom:0; z-index:101;background-color: white;padding: 15px 0;  }
+.nowrap{  -ms-text-overflow: ellipsis;  text-overflow: ellipsis;  overflow: hidden;  white-space: nowrap;  }
