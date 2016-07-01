@@ -27,6 +27,9 @@ class Panorama extends \app\models\base\Panorama
         return array_merge(parent::fields(), [
             'thumb_url' => function(){
                 return \Yii::$app->request->getHostInfo().\Yii::$app->request->getBaseUrl().$this->thumb_url;
+            },
+            'panorama_url' => function(){
+                return \Yii::$app->request->getHostInfo().\Yii::$app->request->getBaseUrl().'/pano/'.$this->hash.'/';
             }
         ]);
     }
