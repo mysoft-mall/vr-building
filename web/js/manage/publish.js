@@ -183,6 +183,7 @@ jQuery(function() {
 
     uploader.on( 'uploadSuccess', function( file , response) {
         var $progressText = $( '.pre-img-progress').find('.progress-text').eq(0);
+
         $progressText.html('<span class="fa fa-spinner fa-spin"></span>发布中...');
 
         // 将上传给后台的全景图片hash值保存在全局中
@@ -251,6 +252,7 @@ jQuery(function() {
                 uploader.stop();
             } else {
                 if(($('.zone-uploaded-pics.publish>.pre-parent-div.uploaded-pics').length === 0) && (hashes.length !== 0)){
+                    $('.pre-parent-div.in-material .pre-img-progress').removeClass('hidden').find('.progress-text').html('<span class="fa fa-spinner fa-spin"></span>发布中...');
                     $.ajax('/admin/material/generate', {
                         data:{
                             title: component.picName.val(),
