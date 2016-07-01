@@ -19,7 +19,7 @@ class ManageController extends Controller
     }
 
     /**
-     * Renders the index view for the module
+     * Renders the publish view for the module
      * @return string
      */
     public function actionPublish()
@@ -29,11 +29,20 @@ class ManageController extends Controller
 
 
     /**
-     * Renders the index view for the module
+     * Renders the material view for the module
      * @return string
      */
     public function actionMaterial()
     {
         return $this->render('material');
+    }
+
+    /**
+     * Renders the panorama view for the module
+     * @return string
+     */
+    public function actionPanorama()
+    {
+        return $this->render('panorama');
     }
 }
