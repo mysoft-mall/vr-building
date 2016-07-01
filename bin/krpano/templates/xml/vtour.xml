@@ -2,7 +2,15 @@
 
 	<include url="skin/vtourskin.xml" />
 
-
+    <plugin name="logo"
+        url="skin/logo.png"
+        keep="true"
+        enabled="false"
+        align="lefttop"
+        x="10" y="5"
+        scale.mobile="0.5"
+        />
+        
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
 	<skin_settings maps="[HAVEGPS]"
 	               maps_type="google"
