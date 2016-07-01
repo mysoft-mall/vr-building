@@ -23,10 +23,7 @@
     <div class="pad-main">
         <div class="x-row">
             <span class="tip-statistics">已有全景素材 <b id="thumb-count">0</b> 个</span>
-            <label class="select_all" for="">
-                <button class="btn-select-material"></button>
-                全选
-            </label>
+            
         </div>
         <div class="pad-function">
             <div class="zone-default" id="zone-thumb">
@@ -44,8 +41,13 @@
                    </tbody>
                </table>
             </div>
+            <div>
+                <div></div>
+                <div id="qrcode">
+                    
+                </div>
+            </div>
         </div>
-        
         <div style="clear:both"></div>
         <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
     </div>
@@ -67,19 +69,12 @@
                   </div>
               </td>
               <td>
-                 <a data-url="{{item.panorama_url}}">分享 </a> 
+                 <a data-url="{{item.panorama_url}}" class="a-qrcode">分享 </a> 
               </td>
               <td>
                   <a  data-id="{{item.id}}">删除</a>
               </td>
             </tr>
-
-
-            <div class="div-thumb">
-                <div class="div-dele">
-                   <span>{{item.title}}</span>
-                </div>
-            </div>
         {{/each}}
     </script>
 
@@ -88,5 +83,6 @@
 <?php $this->beginBlock('js') ?>
     <script src="<?=$baseUrl ?>/dist/template.js"></script>
     <script src="<?=$baseUrl ?>/dist/paging/jquery.pagination.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script src="<?=$baseUrl ?>/js/manage/panorama.js?v=34632673"></script>
 <?php $this->endBlock('js') ?>
