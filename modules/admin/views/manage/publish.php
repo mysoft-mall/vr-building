@@ -85,7 +85,7 @@
                         还没有素材
                     </div>
                 </div>
-                <div id="Pagination" class="pagination" style="height:65px">
+                <div id="Pagination" class="pagination" style="height:65px;bottom:0; position:absolute;">
                     <!-- 这里显示分页 -->
                 </div>
                 <button class="btn-confirm-material hidden">确定</button>

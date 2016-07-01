@@ -4,16 +4,9 @@ button,input{ height:100%; outline:none; border:none;}
     position:relative;
     height: auto;
     width:100%;
-    top:50%;
-    left:50%;
     border:1px solid #ddd;
     box-shadow:0 0px 6px #ddd;
     background-color:white;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 .pad-publisher .tab-nav{ height:50px;background-color:#f8f8f8; }
 .pad-publisher .tab-nav>.btn-scene{ height:100%; min-width:130px; background-color:white;
@@ -29,7 +22,7 @@ button.btn-select-material.sub{}
 .pad-main{ }
 .pad-main .x-row{height:55px; padding:10px 20px;}
 .pad-main .x-row input{ height:100%; padding:0 10px; width:100%; border:1px solid #ddd;}
-.pad-main .pad-function{background-color: #f6f6f6;height: 620px;}
+.pad-main .pad-function{background-color: #f6f6f6;/* height: 620px; */}
 .pad-main .x-button{
     background-color:#e4e4e4; padding: 0 30px;height:100%; border:none; color:#666;
     -webkit-transition: background-color .3s;
@@ -40,7 +33,7 @@ button.btn-select-material.sub{}
 }
 .pad-main .x-button:hover{ background-color:#4faf13;color:white; }
 .pad-main .zone-uploaded-pics, .pad-main .zone-default{height:640px; background-color:#eee;}
-.pad-main .zone-default{height:620px;width: auto;color:#ccc;display: block;padding: 20px 10px;overflow-y: auto;}
+.pad-main .zone-default{height: auto;width: auto;color:#ccc;display: block;padding: 20px 10px;overflow-y: auto;}
 
 .zone-uploaded-pics .card-material{}
 .zone-uploaded-pics .card-material .img-content{}

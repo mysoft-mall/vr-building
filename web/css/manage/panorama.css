@@ -4,16 +4,9 @@ button,input{ height:100%; outline:none; border:none;}
     position:relative;
     height: auto;
     width:100%;
-    top:50%;
-    left:50%;
     border:1px solid #ddd;
     box-shadow:0 0px 6px #ddd;
     background-color:white;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 .pad-publisher .tab-nav{ height:50px;background-color:#f8f8f8; }
 .pad-publisher .tab-nav>.btn-scene{ height:100%; min-width:130px; background-color:white;

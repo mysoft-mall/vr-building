@@ -52,7 +52,7 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
         </div>
     </nav>
     <div class="x-container">
-        <div class="container" style="height:100%">
+        <div class="container" style=" margin:72px auto">
             <?= $content ?>
         </div>
     </div>
