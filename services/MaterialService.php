@@ -87,7 +87,7 @@ class MaterialService extends Service
      * @param array $hashes
      * @return bool
      */
-    public function generate(array $hashes)
+    public function generate(array $hashes, $title)
     {
         $res = false;
         //todo 检验全景是否已存在
@@ -107,7 +107,7 @@ class MaterialService extends Service
 
                 //记录数据
                 $pano = new Panorama();
-                $pano->title = '未实现';
+                $pano->title = $title;
                 $pano->hash = $panoHash;
                 $pano->thumb_url = '/thumb/'.$hashes[0].'.jpg';
                 $pano->created_on = date('Y-m-d H:i:s');

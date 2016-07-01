@@ -20,7 +20,7 @@ use Yii;
 class PanoramaController extends Controller
 {
     /**
-     * 获取素材列表
+     * 获取全景列表
      *
      * 请求方法：GET
      *

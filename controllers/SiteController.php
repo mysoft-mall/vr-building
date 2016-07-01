@@ -123,6 +123,6 @@ enctype="multipart/form-data">
      */
     public function actionWxConfig($url='')
     {
-        echo \weixin\widgets\ShareConfigWidget::widget(['account'=>Yii::$app->weixin->getAccount(),'debug'=>true, 'url'=>$url, 'HTMLBlock'=>false]);
+        echo \weixin\widgets\ShareConfigWidget::widget(['account'=>Yii::$app->weixin->getAccount(),'debug'=>YII_DEBUG, 'url'=>$url, 'HTMLBlock'=>false]);
     }
 }
