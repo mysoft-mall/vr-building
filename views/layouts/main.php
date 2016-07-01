@@ -62,6 +62,13 @@ $baseUrl = \Yii::$app->urlManager->getBaseUrl();
             <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
     </footer>
+    <?php
+    if (isset($this->blocks['modal'])) { ?>
+
+        <?= $this->blocks['modal'] ?>
+
+    <?php } ?>
+
 <script src="<?=$baseUrl?>/dist/jquery/jquery.min.js"></script>
 <script src="<?=$baseUrl?>/dist/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?=$baseUrl?>/js/global.js?v=354563534"></script>

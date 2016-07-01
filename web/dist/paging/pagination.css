@@ -9,12 +9,12 @@
 	height:35px;
 	line-height:33px;
 	min-width:35px;
-	margin-left:-1px;
-	border:1px solid #ccc;
 	text-align:center;
+
 }
 .pagination .current.prev:hover,
-.pagination a:hover, .pagination .current:hover{
+.pagination .current.next:hover,
+.pagination a:hover{
 	background-color:rgba(79,175,19,.6);
 	color:white;
 }

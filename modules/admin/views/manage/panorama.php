@@ -30,7 +30,7 @@
                <table width="100%" class="table-pano">
                    <thead>
                      <tr>
-                       <td class="td-checkbox"><input type="checkbox" title="全选"/></td>
+                       <td class="td-checkbox"></td>
                        <td>作品</td>
                        <td>分享</td>
                        <td>操作</td>
@@ -43,9 +43,7 @@
             </div>
             <div>
                 <div></div>
-                <div id="qrcode">
-                    
-                </div>
+
             </div>
         </div>
         <div style="clear:both"></div>
@@ -53,10 +51,14 @@
     </div>
 </div>
 
+
+
+
+
     <script id="test" type="text/html">
         {{each items as item}}
             <tr>
-              <td class="td-checkbox"><input type="checkbox" /></td>
+              <td class="td-checkbox"></td>
               <td>
                   <div class="div-pano">
                         <div class="pano-img">
@@ -79,6 +81,22 @@
     </script>
 
     <div id="content"></div>
+
+<?php $this->beginBlock('modal')?>
+    <div id="modal-qrcode" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" >
+                <div class="row-title">
+                    <span class="modal-title">微信扫一扫查看</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1.0; color:#ddd"><span aria-hidden="true">×</span></button>
+                </div>
+                <div id="qrcode">
+
+                </div>
+            </div>
+        </div>
+    </div>
+<?php $this->endBlock('modal')?>
 
 <?php $this->beginBlock('js') ?>
     <script src="<?=$baseUrl ?>/dist/template.js"></script>

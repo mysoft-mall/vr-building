@@ -58,8 +58,11 @@ jQuery(function() {
       })
       .on("click",".a-qrcode",function(){
           var _url=$(this).attr("data-url");
+
           $("#qrcode").html("");
-          jQuery('#qrcode').qrcode({width: 64,height: 64,text:_url});
+          jQuery('#qrcode').qrcode({width: 200,height: 200,text:_url});
+
+		  $('#modal-qrcode').modal('show');
       });
 
 });
