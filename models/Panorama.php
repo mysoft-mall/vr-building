@@ -15,6 +15,7 @@ class Panorama extends \app\models\base\Panorama
     {
         $p = $queryModel->getPagination();
         $query = self::find()
+            ->orderBy(['created_on' => SORT_DESC])
             ->offset($p->getOffset())
             ->limit($queryModel->getPagination()->getLimit());
         $p->setTotal($query->count());

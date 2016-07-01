@@ -98,7 +98,7 @@ class MaterialService extends Service
         if($td = $this->copyTempFiles($hashes)){
             $targetFile = $td . '/vtour/index.html';
 
-            $command = 'php ' . Yii::$app->basePath . '/yii pano/handle ' . $td.'/*.jpg';
+            $command = 'php ' . Yii::$app->basePath . '/yii pano/handle ' . "'$td/*.jpg'";
             Yii::error($command);
             exec($command);
             if (is_file($targetFile)) {
