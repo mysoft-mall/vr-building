@@ -76,7 +76,29 @@ button,input{ height:100%; outline:none; border:none;}
     transition: background-color .3s;
 }
 .pad-main .pad-function .x-button:hover{ background-color:#4faf13;color:white; }
-.pad-main .zone-uploaded-pics, .pad-main .zone-default{height:530px; background-color:#eee;}
+.pad-main .zone-uploaded-pics, .pad-main .zone-default{position:relative;height:530px; background-color:#eee;}
+.pad-result .pad-status{
+    background-color:#f4f4f4;
+    padding: 40px 0;
+    display: block;
+    width:100%;
+    position:absolute;
+    top: 250px;
+
+}
+.pad-result{ height:695px; width: 100%; display: block; position: relative;}
+.pad-status span.status{
+    text-align:center;
+    display:block; line-height:60px;font-size: 35px;
+    color:#4faf13;
+}
+.pad-status span.link{ display:block; height:30px; text-align:center;
+    line-height:30px; font-size:16px; color:#999; }
+.pad-status span.link a{
+    color:#4faf13; padding: 0 10px; font-weight: 100; }
+.pad-status span.link a:hover{
+    color:#439510; text-decoration:none; cursor:pointer;
+}
 .pad-main .zone-default{line-height:530px; color:#ccc; text-align: center; font-size: 40px; font-weight: 900}
 .pad-uploader{height:55px; text-align:center; padding:10px 20px;}
 .pad-uploader .btn-publish{ height:100%; width:100%; background-color:#4faf13; color:white; }

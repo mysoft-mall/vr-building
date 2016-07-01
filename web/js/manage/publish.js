@@ -4,11 +4,30 @@
 
 "use strict";
 
-var hashes = [], uploadedImage = 0;
+var hashes = [], uploadedImage = 0,
+    uploader,
+    panoramaUrl = $('.jumpToPanorama').val()
+    ;
 
 var component = {
-    picName : $('.pic-name'),       // 图片标题输入框
+    picName : $('.pic-name'),                       // 图片标题输入框
+    padResult: $('.pad-result'),                    // 上传后显示结果的框
+    textStatus: $('.pad-status .status'),
+    linkStatus: $('.pad-status .link'),
+
+    padMain: $('.pad-main'),                        // 上传操作主要框
+    zoneUploadedPics:$('.zone-uploaded-pics'),      // 显示上传全景图区域
+    zoneDefault: $('.zone-default')                 // 没有上传全景图片是显示的默认图片
 };
+
+var methods = {
+    reset: function(){
+        uploader.reset();
+        component.picName.val('');
+        component.zoneUploadedPics.empty().addClass('hidden');
+        component.zoneDefault.removeClass('hidden');
+    }
+}
 
 
 // 文件上传
@@ -17,8 +36,7 @@ jQuery(function() {
         $list = $('#thelist'),
         $btn = $('.btn-publish'),
         $wrap = $('.zone-uploaded-pics'),
-        state = 'pending',
-        uploader;
+        state = 'pending';
 
     var isSupportBase64 = ( function() {
         var data = new Image();
@@ -134,7 +152,7 @@ jQuery(function() {
 
     uploader.on( 'uploadSuccess', function( file , response) {
         var $progressText = $( '.pre-img-progress[data-id="'+file.id+'"]').find('.progress-text').eq(0);
-        $progressText.text('').addClass('fa').addClass('fa-check');
+        $progressText.text('上传成功');
 
         // 将上传给后台的全景图片hash值保存在全局中
         hashes.push(response.data.hs);
@@ -154,6 +172,15 @@ jQuery(function() {
             }).done(function(res){
                 hashes = [];
                 uploadedImage = 0;
+                if(res.result){
+                    component.textStatus.text('发布成功');
+                    component.linkStatus.html('您可以在<a  href="' + panoramaUrl + '">作品管理</a>中进行更多操作');
+                }else{
+                    component.textStatus.text('发布失败').css('color', '#ff2e34');
+                    component.linkStatus.html('点击<a class="try_again"  href="javascript:void(0)" style="color:#ff2e34" class="jump">重新发布</a>再来一次');
+                }
+                component.padMain.addClass('hidden');
+                component.padResult.removeClass('hidden');
             });
         }
 
@@ -214,5 +241,11 @@ var bindEvent = function(){
         var _this = $(this);
         _this.hasClass('error') &&
         _this.removeClass('error').val('');
+    })
+    component.padResult.on('click', '.try_again', function(){
+        component.padResult.addClass('hidden');
+        methods.reset();
+        component.padMain.removeClass('hidden');
+
     })
 }();
