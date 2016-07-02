@@ -121,7 +121,7 @@ jQuery(function() {
                     if( isSupportBase64 ) {
                         console.log(file);
                         $wrap.append(
-                                        '<div class="pre-parent-div" > ' +
+                                        '<div class="pre-parent-div uploaded-pics" > ' +
                                         '   <div class="pre-img-container"> ' +
                                         '       <img src=" '+ src+' " /> ' +
                                         '       <div class="pre-img-progress hidden" data-id=' + file.id + '>' +
@@ -144,7 +144,7 @@ jQuery(function() {
                         }).done(function( response ) {
                             if (response.result) {
                                 $wrap.append(
-                                        '<div class="pre-parent-div" > ' +
+                                        '<div class="pre-parent-div uploaded-pics" > ' +
                                         '   <div class="pre-img-container"> ' +
                                         '       <img src=" '+ response.result +' " /> ' +
                                         '       <div class="pre-img-progress hidden" data-id=' + file.id + '>' +
@@ -177,14 +177,14 @@ jQuery(function() {
         var $progressBar = $progress.find('.progress-bar').eq(0),
             $progressText = $progress.find('.progress-text').eq(0);
         $progress.removeClass('hidden');
-        $progressText.text('已上传' + ( percentage * 100 ) +  '%');
+        $progressText.text('已上传' + ( percentage.toFixed(2) * 100 ) +  '%');
         $progressBar.css( 'width', percentage * 100 + '%' );
     });
 
     uploader.on( 'uploadSuccess', function( file , response) {
         var $progressText = $( '.pre-img-progress').find('.progress-text').eq(0);
 
-        $progressText.html('<span class="fa fa-spinner fa-spin"></span>发布中...');
+        $( '.pre-img-progress').find('.progress-text').html('<span class="fa fa-spinner fa-spin"></span>发布中...');
 
         // 将上传给后台的全景图片hash值保存在全局中
         hashes.push(response.data.hs);
@@ -250,6 +250,7 @@ jQuery(function() {
             if ( state === 'uploading' ) {
 
                 uploader.stop();
+
             } else {
                 if(($('.zone-uploaded-pics.publish>.pre-parent-div.uploaded-pics').length === 0) && (hashes.length !== 0)){
                     $('.pre-parent-div.in-material .pre-img-progress').removeClass('hidden').find('.progress-text').html('<span class="fa fa-spinner fa-spin"></span>发布中...');
@@ -274,6 +275,7 @@ jQuery(function() {
                         component.padResult.removeClass('hidden');
                     });
                 }else{
+                    $('.pre-parent-div.in-material .pre-img-progress').removeClass('hidden').find('.progress-text').html('<span class="fa fa-spinner fa-spin"></span>发布中...');
                     uploader.upload();
                 }
             }

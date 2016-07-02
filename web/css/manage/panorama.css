@@ -1,5 +1,7 @@
 /*  material CSS file  */
-a{ cursor:pointer!important; }
+a{
+    cursor:pointer!important;
+}
 a.a-dele:hover{
     color:#ff2e34;
 }
@@ -70,7 +72,8 @@ button.btn-select-material.sub{}
 }
 .pad-main .pad-function{
     background-color: #f6f6f6;
-    height:620px; }
+    height:620px;
+}
 .pad-main .x-button{
     background-color:#e4e4e4;
     padding: 0 30px;
@@ -83,17 +86,24 @@ button.btn-select-material.sub{}
     -o-transition: background-color .3s;
     transition: background-color .3s;
 }
-.pad-main .x-button:hover{ background-color:#4faf13;color:white; }
-.pad-main .zone-uploaded-pics, .pad-main .zone-default{height:640px; background-color:#eee;}
-.pad-main .zone-default{height:620px; color:#ccc; overflow-y: auto }
+.pad-main .x-button:hover{
+    background-color:#4faf13;
+    color:white;
+}
+.pad-main .zone-uploaded-pics, .pad-main .zone-default{
+    height:640px;
+    background-color:#eee;
+}
+.pad-main .zone-default{
+    height:620px;
+    color:#ccc;
+    overflow-y: auto
+}
 
-.zone-uploaded-pics .card-material{}
-.zone-uploaded-pics .card-material .img-content{}
-.zone-uploaded-pics .img-content .cover-material{}
-.zone-uploaded-pics .card-material .text-content{}
-.zone-uploaded-pics .text-content .name-pic{}
-.zone-uploaded-pics .text-content .btn-delete{}
-.modal-dialog{ width:400px;}
+.modal-dialog{
+    width:400px;
+}
+
 .modal-content{
     position:relative;
     padding:70px 20px 20px 20px;
@@ -103,12 +113,35 @@ button.btn-select-material.sub{}
     border-radius:0;
 }
 .modal-content .row-title{
-    position: absolute; left: 0; top:0; width: 100%; height: 55px; font-size: 15px; background-color: #444; padding:10px 20px; color:#ddd;
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 55px;
+    font-size: 15px;
+    background-color: #444;
+    padding:10px 20px;
+    color:#ddd;
 }
-.modal-title{line-height:35px;}
-.x-row span  {height:100%;line-height: 30px;color:#999;font-size: 17px;width:80%;}
-.x-row button{ color:white; font-size:20px;opacity:1 }
-#qrcode canvas{margin:20px auto; display:block; }
+.modal-title{
+    line-height:35px;
+}
+.x-row span  {
+    height:100%;
+    line-height: 30px;
+    color:#999;
+    font-size: 17px;
+    width:80%;
+}
+.x-row button{
+    color:white;
+    font-size:20px;
+    opacity:1
+}
+#qrcode canvas{
+    margin:20px auto;
+    display:block;
+}
 
 .table-pano td{
     padding:5px 10px;
