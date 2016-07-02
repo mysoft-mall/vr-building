@@ -69,6 +69,6 @@ button.btn-select-material.sub{}
     max-width: 220px;
 }
 .div-dele .a-dele{float: right; width:20%; text-align:right;}
-.div-dele .a-dele:hover{color: firebrick; text-decoration: none; cursor: pointer;}
+.div-dele .a-dele:hover{color: #ff2e34; text-decoration: none; cursor: pointer;}
 
 

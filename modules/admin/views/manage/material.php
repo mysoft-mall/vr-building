@@ -24,10 +24,6 @@
     <div class="pad-main">
         <div class="x-row">
             <span class="tip-statistics">已有全景素材 <b id="thumb-count">0</b> 个</span>
-            <label class="select_all" for="">
-                <button class="btn-select-material"></button>
-                全选
-            </label>
             <button class="pull-right x-button " id="picker">上传</button>
         </div>
         <div class="pad-function">

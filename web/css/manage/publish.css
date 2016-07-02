@@ -54,7 +54,7 @@ button,input{ height:100%; outline:none; border:none;}
 .pre-foot{height: 35px;text-align:right; font-size: 0; }
 .pre-foot .filename, .pre-foot a{height: 35px; line-height:35px; display: inline-block;  position: relative; top:5px; font-size:14px; }
 .pre-foot a{ text-align: right; width: 20%; float: right; }
-.pre-foot a:hover{ color:firebrick; text-decoration: none;cursor:pointer; }
+.pre-foot a:hover{ color:#ff2e34; text-decoration: none;cursor:pointer; }
 .pre-foot .filename{  text-align: left;  width: 80%; float: left;  }
 
 .pad-main{ }
