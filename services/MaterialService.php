@@ -13,6 +13,8 @@ use app\models\query\MaterialQueryModel;
 use Yii;
 use app\components\Service;
 use yii\helpers\FileHelper;
+use Gregwar\Image\Image;
+use yii\web\UploadedFile;
 
 /**
  * 素材服务
@@ -138,5 +140,39 @@ class MaterialService extends Service
     public function delete($id)
     {
         return Material::deleteAll('id=:id', [':id'=>$id]) > 0;
+    }
+    
+    public function upload()
+    {
+        $file = UploadedFile::getInstanceByName('pano');
+        if(!$file){
+            Yii::$app->response->error('获取文件失败');
+        }
+        $tempImg = Image::open($file->tempName);
+        if($file->size>0 && $tempImg->width()/$tempImg->height()!=2){
+            Yii::$app->response->error('支持2:1的图片');
+        }
+        unset($tempImg);
+
+        $hash = substr(md5_file($file->tempName), 8, 8);
+        $path = MaterialService::Instance()->getMaterialPath();
+        FileHelper::createDirectory($path);
+        $name = $path.'/'.$hash.'.'.$file->getExtension();
+        if($file->saveAs($name)) {
+            $thumbFile = MaterialService::Instance()->getThumbPath()."/{$hash}.jpg";
+            if(!is_file($thumbFile)){
+                $img = Image::open($name);
+                $img->zoomCrop(200, 200)->save($thumbFile);
+            }
+
+            $material = new Material();
+            $material->hash = $hash;
+            $material->file_name = $file->name;
+            $material->thumb_url = "/thumb/{$hash}.jpg";
+            $material->created_on = date('Y-m-d H:i:s');
+            $material->save();
+            
+            return $hash;
+        }
     }
 }

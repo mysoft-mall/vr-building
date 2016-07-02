@@ -1,14 +1,10 @@
 <?php
 namespace app\modules\admin\controllers;
 
-use app\models\Material;
 use app\models\query\MaterialQueryModel;
 use app\services\MaterialService;
-use Gregwar\Image\Image;
-use yii\helpers\FileHelper;
 use yii\web\Controller;
-use yii\web\UploadedFile;
-use Yii;
+use yii;
 
 /**
  * 全景素材
@@ -18,40 +14,21 @@ use Yii;
 class MaterialController extends Controller
 {
     /**
-     * 上传全景图片
+     * 上传全景素材
+     *
+     * 请求方法：POST
+     *
+     * 请求参数：
+     * pano 素材文件
      */
     public function actionUpload()
     {
-        $file = UploadedFile::getInstanceByName('pano');
-        if(!$file){
-            Yii::$app->response->error('获取文件失败');
-        }
-        $tempImg = Image::open($file->tempName);
-        if($file->size>0 && $tempImg->width()/$tempImg->height()!=2){
-            Yii::$app->response->error('支持2:1的图片');
-        }
-        unset($tempImg);
+        $hash = MaterialService::Instance()->upload();
 
-        $hash = substr(md5_file($file->tempName), 8, 8);
-        $path = MaterialService::Instance()->getMaterialPath();
-        FileHelper::createDirectory($path);
-        $name = $path.'/'.$hash.'.'.$file->getExtension();
-        if($file->saveAs($name)) {
-            $thumbFile = MaterialService::Instance()->getThumbPath()."/{$hash}.jpg";
-            if(!is_file($thumbFile)){
-                $img = Image::open($name);
-                $img->zoomCrop(200, 200)->save($thumbFile);
-            }
-
-            $material = new Material();
-            $material->hash = $hash;
-            $material->file_name = $file->name;
-            $material->thumb_url = "/thumb/{$hash}.jpg";
-            $material->created_on = date('Y-m-d H:i:s');
-            $material->save();
-
-            Yii::$app->response->success(['hs'=>$hash]);
+        if ($hash) {
+            Yii::$app->response->success(['hs' => $hash]);
         }
+
         Yii::$app->response->error('文件保存失败');
     }
 
@@ -60,8 +37,10 @@ class MaterialController extends Controller
      *
      * 请求方法：GET
      *
-     * 请求参数
-     * @param $hashes
+     * 请求参数：
+     * hashes 素材hash数组
+     * title 全景标题
+     *
      */
     public function actionGenerate()
     {
@@ -69,13 +48,13 @@ class MaterialController extends Controller
         ignore_user_abort(true);
         $hashes = Yii::$app->request->post('hashes');
         $title = Yii::$app->request->post('title');
-        if(empty($hashes)){
+        if (empty($hashes)) {
             Yii::$app->response->error('无效的素材');
         }
 
         $res = MaterialService::Instance()->generate($hashes, $title);
 
-        if(!$res){
+        if (!$res) {
             Yii::$app->response->error('生成失败');
         }
         Yii::$app->response->success();
@@ -86,7 +65,7 @@ class MaterialController extends Controller
      *
      * 请求方法：GET
      *
-     * 请求参数
+     * 请求参数：
      * page 页码
      * pageSize 每页数量
      *
@@ -107,18 +86,18 @@ class MaterialController extends Controller
      *
      * 请求参数
      * id 素材ID
-     * 
+     *
      */
     public function actionDelete()
     {
         $id = Yii::$app->request->post('id');
         $res = MaterialService::Instance()->delete($id);
-        if($res){
+        if ($res) {
             Yii::$app->response->success('删除成功');
-        }else{
+        } else {
             Yii::$app->response->error('删除失败');
         }
-        
+
     }
-    
+
 }
