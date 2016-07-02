@@ -119,10 +119,12 @@ button,input{ height:100%; outline:none; border:none;}
 .x-row span  { height:100%; line-height:35px;color:#999; font-size: 17px; width:80%;  }
 .btn-select-material{
     position:absolute; height:25px; width:25px; background-color:#eee;border:1px solid #aaa;
-    z-index:1000; top:15px; left:15px;   font-size:15px; color:white;
+    z-index:1000; top:15px; left:15px;   font-size:15px; color:white; padding: 0;
 }
 .btn-select-material.selected{
     background-color:#4faf13;border:1px solid #4faf13;
 }
 .btn-confirm-material{ position:absolute; bottom:15px; right:15px; height:35px; min-width:80px;  background-color:#4faf13; color:white;}
 .btn-confirm-material:hover{  background-color:#439510;  }
+.zone-uploaded-pics.in-modal .pre-img-container{
+    cursor: pointer;    }

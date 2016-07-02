@@ -351,6 +351,9 @@ var bindEvent = function(){
             methods.toggleHashes(_this.data("hash"));
             selectedMaterial === 0 ? $('.btn-confirm-material').addClass('hidden') : $('.btn-confirm-material').removeClass('hidden');
         })
+        .on('click', '.zone-uploaded-pics.in-modal .pre-img-container', function(){
+            $(this).prev().trigger('click');
+        })
         // 点击确定素材按钮
         .on('click', '.btn-confirm-material', function(){
             var materials = [];
@@ -369,6 +372,8 @@ var bindEvent = function(){
             for(var i = 0; i < materials.length; i++){
                 component.zoneUploadedPics.append(materials[i]);
             }
+
             $('#modal-material-library').modal('hide');
         })
+
 }();
