@@ -244,8 +244,9 @@ jQuery(function() {
         uploader.removeFile( $(this).attr("data-id") ,true);
     }).on('click', '.btn-publish', function(){
         // 判断是否为空
-        if(component.picName.val() === ''){
-            component.picName.addClass('error').val('请输入标题');
+        if(component.picName.val() === '' ){
+            component.picName.addClass('error');
+            alert('请输入标题');
         }else{
             if ( state === 'uploading' ) {
 

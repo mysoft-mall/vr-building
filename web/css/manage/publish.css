@@ -60,7 +60,7 @@ button,input{ height:100%; outline:none; border:none;}
 .pad-main{ }
 .pad-main .x-row{height:55px; padding:10px 20px;}
 .pad-main .x-row input{ height:100%; padding:0 10px; width:100%; border:1px solid #ddd;}
-.pad-main .x-row input.error{ border: 1px solid #ff2e34; color: indianred; text-align:right;  }
+.pad-main .x-row input.error{ border: 1px solid #ff2e34; color: indianred;  }
 .pad-main .pad-function{background-color: #f6f6f6;height: auto;}
 .pad-main .pad-function .x-button{
     background-color:#e4e4e4; padding: 0 15px;height:100%; border:none; color:#666; margin-right:8px;
